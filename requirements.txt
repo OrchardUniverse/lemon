@@ -1,0 +1,5 @@
+python-dotenv
+openai
+nltk
+rouge
+import openpyxl
