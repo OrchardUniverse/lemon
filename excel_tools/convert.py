@@ -1,8 +1,11 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import sys
 import pandas as pd
 
+
+seperator = ','
+#seperator = '|'
 def convert_file(input_path: str, output_path: str):
     """
     Converts a CSV file to Excel or an Excel file to CSV based on the input and output file extensions.
@@ -12,14 +15,14 @@ def convert_file(input_path: str, output_path: str):
     """
     if input_path.endswith('.csv') and output_path.endswith('.xlsx'):
         # Convert CSV to Excel
-        df = pd.read_csv(input_path, sep='|')
-        df.to_excel(output_path, index=True)
+        df = pd.read_csv(input_path, sep=seperator)
+        df.to_excel(output_path, index=False)
         print(f"CSV file '{input_path}' has been converted to Excel file '{output_path}'.")
 
     elif input_path.endswith('.xlsx') and output_path.endswith('.csv'):
         # Convert Excel to CSV
         df = pd.read_excel(input_path)
-        df.to_csv(output_path, sep='|', index=True)
+        df.to_csv(output_path, sep=seperator, index=False)
         print(f"Excel file '{input_path}' has been converted to CSV file '{output_path}'.")
         
     else:
